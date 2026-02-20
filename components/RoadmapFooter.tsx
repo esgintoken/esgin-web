@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Twitter, Disc as Discord, Github, CheckCircle2, Zap, Rocket, Cuboid as Cube } from "lucide-react";
+import { Twitter, Disc as Discord, Github, CheckCircle2, Zap, Rocket, Cuboid as Cube, Send, BookOpen } from "lucide-react";
 
 const phases = [
     {
@@ -155,27 +155,27 @@ export default function RoadmapFooter() {
                         <div>
                             <h4 className="text-white font-bold mb-6">Connect</h4>
                             <div className="flex gap-4">
-                                <a href="#" className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-white/60 hover:bg-emerald-500 hover:text-white transition-all">
+                                <a href="https://medium.com/@esgintoken" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-white/60 hover:bg-emerald-500 hover:text-white transition-all">
+                                    <BookOpen className="w-5 h-5" />
+                                </a>
+                                <a href="https://x.com/esgintoken" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-white/60 hover:bg-emerald-500 hover:text-white transition-all">
                                     <Twitter className="w-5 h-5" />
                                 </a>
-                                <a href="#" className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-white/60 hover:bg-emerald-500 hover:text-white transition-all">
-                                    <Discord className="w-5 h-5" />
-                                </a>
-                                <a href="#" className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-white/60 hover:bg-emerald-500 hover:text-white transition-all">
-                                    <Github className="w-5 h-5" />
+                                <a href="https://t.me/ESGINToken" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-white/60 hover:bg-emerald-500 hover:text-white transition-all">
+                                    <Send className="w-5 h-5" />
                                 </a>
                             </div>
                         </div>
                     </div>
+                </div>
 
-                    <div className="pt-8 border-t border-white/5 flex flex-col md:flex-row items-center justify-between gap-4">
-                        <p className="text-white/30 text-xs">
-                            © 2026 ESGIN Project. All rights reserved.
-                        </p>
-                        <div className="flex gap-6 text-white/30 text-xs">
-                            <a href="#" className="hover:text-white transition-colors">Privacy Policy</a>
-                            <a href="#" className="hover:text-white transition-colors">Terms of Service</a>
-                        </div>
+                <div className="pt-8 border-t border-white/5 flex flex-col md:flex-row items-center justify-between gap-4">
+                    <p className="text-white/30 text-xs">
+                        © 2026 ESGIN Project. All rights reserved.
+                    </p>
+                    <div className="flex gap-6 text-white/30 text-xs">
+                        <a href="#" className="hover:text-white transition-colors">Privacy Policy</a>
+                        <a href="#" className="hover:text-white transition-colors">Terms of Service</a>
                     </div>
                 </div>
             </footer>

@@ -4,10 +4,11 @@ import { motion } from "framer-motion";
 import { ArrowRight, PieChart, Coins, RefreshCw, TrendingUp } from "lucide-react";
 
 const tokenDist = [
-    { label: "Ecosystem Rewards", value: 50, color: "bg-emerald-500" },
-    { label: "Liquidity Pool", value: 20, color: "bg-cyan-500" },
-    { label: "Team & Advisors", value: 15, color: "bg-blue-500" },
-    { label: "Partners & Treasury", value: 15, color: "bg-purple-500" },
+    { label: "Reward Pool", value: 45, color: "bg-emerald-500" },
+    { label: "ESG Bank Pool", value: 15, color: "bg-cyan-500" },
+    { label: "Team", value: 15, color: "bg-blue-500" },
+    { label: "Liquidity", value: 15, color: "bg-purple-500" },
+    { label: "Investment", value: 10, color: "bg-lime-500" },
 ];
 
 export default function Tokenomics() {
@@ -16,7 +17,7 @@ export default function Tokenomics() {
 
             <div className="container mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
 
-                {/* Left: Business Model (The Cycle) */}
+                {/* Left: Token Definition & Philosophy */}
                 <div>
                     <motion.div
                         initial={{ opacity: 0, x: -20 }}
@@ -25,36 +26,36 @@ export default function Tokenomics() {
                         transition={{ duration: 0.6 }}
                     >
                         <span className="text-emerald-400 font-mono tracking-widest text-sm uppercase">
-                            Real Yield
+                            AI-Native Utility Token
                         </span>
                         <h2 className="mt-4 text-3xl md:text-5xl font-bold text-white tracking-tight">
-                            Backed by <br />
+                            What is <br />
                             <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-cyan-400">
-                                Real Revenue
+                                ESGIN Token?
                             </span>
                         </h2>
                         <p className="mt-6 text-emerald-100/60 text-lg leading-relaxed">
-                            Unlike speculative tokens, ESGIN is backed by the physical sales of r-PET materials and B2B ESG Data (NFTs). Profits are used to buy back and burn tokens.
+                            ESGIN is an AI-native utility token designed to operate within the ESG-IN ecosystem. It supports validation reliability, data integrity, and stability over speculation.
                         </p>
                     </motion.div>
 
                     <div className="mt-12 space-y-6">
                         <CycleStep
-                            icon={Coins}
-                            title="Revenue Generation"
-                            desc="Sales from recycled materials & Data APIs."
+                            icon={RefreshCw}
+                            title="Verifiable ESG Activity"
+                            desc="Representation of real-world activities."
                             delay={0.2}
                         />
                         <CycleStep
-                            icon={RefreshCw}
-                            title="Buyback & Burn"
-                            desc="Profits automatically buy ESGIN from market."
+                            icon={Coins}
+                            title="Structural Separation"
+                            desc="Separation of validation and reward layers."
                             delay={0.4}
                         />
                         <CycleStep
                             icon={TrendingUp}
-                            title="Value Appreciation"
-                            desc="Reduced supply drives long-term token value."
+                            title="Stability-Oriented"
+                            desc="Predictable token interaction model."
                             delay={0.6}
                         />
                     </div>

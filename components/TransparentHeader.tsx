@@ -56,16 +56,19 @@ export default function TransparentHeader() {
                 {/* Desktop Nav */}
                 <nav className="hidden md:flex items-center gap-8">
                     {navLinks.map((link) => (
-                        <Link
+                        <a
                             key={link.name}
                             href={link.href}
                             className="text-sm font-medium text-emerald-100/80 hover:text-emerald-400 transition-colors"
                         >
                             {link.name}
-                        </Link>
+                        </a>
                     ))}
-                    <button className="px-5 py-2 rounded-full bg-emerald-500/10 border border-emerald-500/50 text-emerald-400 text-sm font-semibold hover:bg-emerald-500 hover:text-white transition-all">
-                        Connect
+                    <button
+                        onClick={() => alert("Whitepaper download will be available soon!")}
+                        className="px-5 py-2 rounded-full bg-emerald-500/10 border border-emerald-500/50 text-emerald-400 text-sm font-semibold hover:bg-emerald-500 hover:text-white transition-all"
+                    >
+                        Whitepaper
                     </button>
                 </nav>
 
@@ -88,17 +91,20 @@ export default function TransparentHeader() {
                         className="absolute top-full left-0 right-0 bg-[#020d0b] border-b border-emerald-900/30 p-6 md:hidden flex flex-col gap-4 shadow-xl"
                     >
                         {navLinks.map((link) => (
-                            <Link
+                            <a
                                 key={link.name}
                                 href={link.href}
                                 onClick={() => setIsMobileMenuOpen(false)}
                                 className="text-lg font-medium text-emerald-100/80 hover:text-emerald-400 transition-colors"
                             >
                                 {link.name}
-                            </Link>
+                            </a>
                         ))}
-                        <button className="w-full py-3 rounded-lg bg-emerald-500 text-white font-bold">
-                            Connect Wallet
+                        <button
+                            onClick={() => alert("Whitepaper download will be available soon!")}
+                            className="w-full py-3 rounded-lg bg-emerald-500 text-white font-bold"
+                        >
+                            Whitepaper
                         </button>
                     </motion.div>
                 )}

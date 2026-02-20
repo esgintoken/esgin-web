@@ -18,7 +18,7 @@ export default function HeroSection() {
     }, []);
 
     return (
-        <section className="relative min-h-screen w-full flex items-center justify-center overflow-hidden pt-10 pb-0">
+        <section className="relative min-h-[80vh] w-full flex items-center justify-center overflow-hidden pt-28 pb-10">
             {/* Background Gradient */}
             <div className="absolute inset-0 bg-gradient-to-b from-[#051a14] via-[#092e24] to-[#051a14] -z-10" />
 

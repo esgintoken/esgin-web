@@ -3,8 +3,10 @@ import HeroSection from "@/components/HeroSection";
 import MarketGap from "@/components/MarketGap";
 import Infrastructure from "@/components/Infrastructure";
 import AppEngine from "@/components/AppEngine";
+import AIEcosystem from "@/components/AIEcosystem";
 import Tokenomics from "@/components/Tokenomics";
-import TeamPartners from "@/components/TeamPartners";
+import TeamLeadership from "@/components/TeamLeadership";
+import StrategicPartners from "@/components/StrategicPartners";
 import MediaInsights from "@/components/MediaInsights";
 import RoadmapFooter from "@/components/RoadmapFooter";
 
@@ -16,8 +18,10 @@ export default function Home() {
       <MarketGap />
       <Infrastructure />
       <AppEngine />
+      <AIEcosystem />
       <Tokenomics />
-      <TeamPartners />
+      <TeamLeadership />
+      <StrategicPartners />
       <MediaInsights />
       <RoadmapFooter />
     </main>

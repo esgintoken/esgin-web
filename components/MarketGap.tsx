@@ -6,7 +6,7 @@ import { useState } from "react";
 
 export default function MarketGap() {
     return (
-        <section id="market-gap" className="py-32 bg-[#020d0b] relative overflow-hidden">
+        <section id="market-gap" className="pt-12 pb-32 bg-[#020d0b] relative overflow-hidden">
             <div className="container mx-auto px-6 relative z-10">
                 <div className="text-center mb-20">
                     <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
