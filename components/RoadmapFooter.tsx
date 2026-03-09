@@ -146,7 +146,7 @@ export default function RoadmapFooter() {
                         <div>
                             <h4 className="text-white font-bold mb-6">Resources</h4>
                             <ul className="space-y-4 text-sm text-white/50">
-                                <li><a href="#" className="hover:text-emerald-400 transition-colors">Whitepaper</a></li>
+                                <li><a href="/ESGIN_Whitepaper.pdf" target="_blank" rel="noopener noreferrer" className="hover:text-emerald-400 transition-colors">Whitepaper</a></li>
                                 <li><a href="#" className="hover:text-emerald-400 transition-colors">Documentation</a></li>
                                 <li><a href="#" className="hover:text-emerald-400 transition-colors">Media Kit</a></li>
                             </ul>

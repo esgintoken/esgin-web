@@ -64,12 +64,14 @@ export default function TransparentHeader() {
                             {link.name}
                         </a>
                     ))}
-                    <button
-                        onClick={() => alert("Whitepaper download will be available soon!")}
+                    <a
+                        href="/ESGIN_Whitepaper.pdf"
+                        target="_blank"
+                        rel="noopener noreferrer"
                         className="px-5 py-2 rounded-full bg-emerald-500/10 border border-emerald-500/50 text-emerald-400 text-sm font-semibold hover:bg-emerald-500 hover:text-white transition-all"
                     >
                         Whitepaper
-                    </button>
+                    </a>
                 </nav>
 
                 {/* Mobile Menu Button */}
@@ -100,12 +102,14 @@ export default function TransparentHeader() {
                                 {link.name}
                             </a>
                         ))}
-                        <button
-                            onClick={() => alert("Whitepaper download will be available soon!")}
-                            className="w-full py-3 rounded-lg bg-emerald-500 text-white font-bold"
+                        <a
+                            href="/ESGIN_Whitepaper.pdf"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="w-full py-3 rounded-lg bg-emerald-500 text-white font-bold text-center block"
                         >
                             Whitepaper
-                        </button>
+                        </a>
                     </motion.div>
                 )}
             </AnimatePresence>

@@ -70,10 +70,10 @@ export default function HeroSection() {
                             Explore Ecosystem
                             <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                         </button>
-                        <button className="flex items-center justify-center gap-2 px-8 py-4 rounded-full bg-white/5 border border-white/10 text-white font-medium hover:bg-white/10 transition-all backdrop-blur-sm">
+                        <a href="/ESGIN_Whitepaper.pdf" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center gap-2 px-8 py-4 rounded-full bg-white/5 border border-white/10 text-white font-medium hover:bg-white/10 transition-all backdrop-blur-sm">
                             <FileText className="w-4 h-4" />
                             Read Whitepaper
-                        </button>
+                        </a>
                     </motion.div>
                 </div>
 
