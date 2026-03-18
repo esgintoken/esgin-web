@@ -1,6 +1,7 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { Twitter, Disc as Discord, Github, CheckCircle2, Zap, Rocket, Cuboid as Cube, Send, BookOpen } from "lucide-react";
 
 const phases = [
@@ -9,8 +10,7 @@ const phases = [
         title: "Validation",
         status: "COMPLETED",
         icon: CheckCircle2,
-        style: "opacity-60 grayscale-[0.5] scale-95 border-emerald-500/20 bg-emerald-900/10",
-        badge: "bg-emerald-500/10 text-emerald-400 border-emerald-500/20",
+        accentColor: "emerald",
         items: [
             "ESG-in App Launch",
             "Pilot Tests Complete",
@@ -22,9 +22,7 @@ const phases = [
         title: "Scale-Up & TGE",
         status: "ACTIVE & MAIN FOCUS",
         icon: Zap,
-        style: "z-10 scale-100 md:scale-110 border-cyan-400 bg-cyan-950/40 shadow-[0_0_50px_-10px_rgba(34,211,238,0.3)] ring-1 ring-cyan-400/50",
-        badge: "bg-cyan-400 text-[#051a14] border-cyan-400 animate-pulse font-bold",
-        isHero: true,
+        accentColor: "cyan",
         items: [
             { text: "🚀 TGE & Exchange Listing (Target: Q1 2026)", highlight: true },
             "Massive Expansion of ESG Bank Nodes",
@@ -36,8 +34,7 @@ const phases = [
         title: "Assetization",
         status: "FUTURE",
         icon: Cube,
-        style: "opacity-80 scale-95 border-purple-400/30 border-dashed bg-purple-900/10",
-        badge: "bg-purple-500/10 text-purple-300 border-purple-500/20",
+        accentColor: "purple",
         items: [
             "Global B2B Data Marketplace",
             "DAO Governance Transition"
@@ -45,7 +42,49 @@ const phases = [
     },
 ];
 
+// Helper to get dynamic styles based on whether a phase is selected
+function getCardStyle(isSelected: boolean, accentColor: string) {
+    if (isSelected) {
+        return "z-10 scale-100 md:scale-110 border-cyan-400 bg-cyan-950/40 shadow-[0_0_50px_-10px_rgba(34,211,238,0.3)] ring-1 ring-cyan-400/50";
+    }
+    if (accentColor === "emerald") {
+        return "opacity-60 grayscale-[0.5] scale-95 border-emerald-500/20 bg-emerald-900/10 cursor-pointer hover:opacity-80 hover:scale-[0.97]";
+    }
+    if (accentColor === "purple") {
+        return "opacity-60 scale-95 border-purple-400/30 border-dashed bg-purple-900/10 cursor-pointer hover:opacity-80 hover:scale-[0.97]";
+    }
+    return "opacity-60 scale-95 border-white/10 bg-white/5 cursor-pointer hover:opacity-80 hover:scale-[0.97]";
+}
+
+function getBadgeStyle(isSelected: boolean, accentColor: string) {
+    if (isSelected) {
+        return "bg-cyan-400 text-[#051a14] border-cyan-400 animate-pulse font-bold";
+    }
+    if (accentColor === "emerald") return "bg-emerald-500/10 text-emerald-400 border-emerald-500/20";
+    if (accentColor === "purple") return "bg-purple-500/10 text-purple-300 border-purple-500/20";
+    return "bg-white/10 text-white/40 border-white/20";
+}
+
+// Reorder phases so the selected one is in the center (index 1)
+function getOrderedPhases(selectedIndex: number) {
+    const ordered = [...phases];
+    if (selectedIndex === 0) {
+        // Move first to center: [1, 0, 2] → display order
+        return [ordered[1], ordered[0], ordered[2]];
+    }
+    if (selectedIndex === 2) {
+        // Move last to center: [0, 2, 1]
+        return [ordered[0], ordered[2], ordered[1]];
+    }
+    // Already center
+    return ordered;
+}
+
 export default function RoadmapFooter() {
+    const [selectedIndex, setSelectedIndex] = useState(1); // Default: Phase 2
+
+    const orderedPhases = getOrderedPhases(selectedIndex);
+
     return (
         <section className="bg-[#020d0b] pt-32 pb-0 relative overflow-hidden">
             {/* Background Gradients */}
@@ -64,69 +103,80 @@ export default function RoadmapFooter() {
 
                 {/* Center Stage Horizontal Grid */}
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-4 items-center max-w-6xl mx-auto">
-                    {phases.map((phase, index) => (
-                        <motion.div
-                            key={phase.phase}
-                            initial={{ opacity: 0, y: 50 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ duration: 0.5, delay: index * 0.1 }}
-                            className={`relative p-8 rounded-2xl border backdrop-blur-sm flex flex-col h-full justify-start ${phase.style}`}
-                        >
-                            {/* Pulsing Border for Hero */}
-                            {phase.isHero && (
-                                <div className="absolute inset-0 rounded-2xl border border-cyan-400 animate-pulse opacity-50 pointer-events-none" />
-                            )}
+                    {orderedPhases.map((phase) => {
+                        const originalIndex = phases.indexOf(phase);
+                        const isSelected = originalIndex === selectedIndex;
 
-                            <div className="flex items-center justify-between mb-8">
-                                <div className={`w-10 h-10 rounded-full flex items-center justify-center 
-                            ${phase.isHero ? "bg-cyan-400 text-[#051a14]" : "bg-white/5 text-white/50"}`}
-                                >
-                                    <phase.icon className="w-5 h-5" />
+                        return (
+                            <motion.div
+                                key={phase.phase}
+                                layout
+                                initial={{ opacity: 0, y: 50 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true }}
+                                transition={{ duration: 0.5, layout: { type: "spring", stiffness: 300, damping: 30 } }}
+                                className={`relative p-8 rounded-2xl border backdrop-blur-sm flex flex-col h-full justify-start transition-all duration-500 ${getCardStyle(isSelected, phase.accentColor)}`}
+                                onClick={() => setSelectedIndex(originalIndex)}
+                            >
+                                {/* Pulsing Border for Selected */}
+                                {isSelected && (
+                                    <motion.div
+                                        className="absolute inset-0 rounded-2xl border border-cyan-400 opacity-50 pointer-events-none"
+                                        animate={{ opacity: [0.3, 0.6, 0.3] }}
+                                        transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+                                    />
+                                )}
+
+                                <div className="flex items-center justify-between mb-8">
+                                    <div className={`w-10 h-10 rounded-full flex items-center justify-center transition-colors duration-500
+                                        ${isSelected ? "bg-cyan-400 text-[#051a14]" : "bg-white/5 text-white/50"}`}
+                                    >
+                                        <phase.icon className="w-5 h-5" />
+                                    </div>
+                                    <span className={`px-3 py-1 rounded-full text-[10px] font-bold uppercase border tracking-wide transition-all duration-500 ${getBadgeStyle(isSelected, phase.accentColor)}`}>
+                                        {phase.status}
+                                    </span>
                                 </div>
-                                <span className={`px-3 py-1 rounded-full text-[10px] font-bold uppercase border tracking-wide ${phase.badge}`}>
-                                    {phase.status}
-                                </span>
-                            </div>
 
-                            <h3 className={`text-2xl font-bold text-white mb-2 ${phase.isHero ? "text-3xl drop-shadow-[0_0_10px_rgba(34,211,238,0.5)]" : ""}`}>
-                                {phase.title}
-                            </h3>
-                            <div className={`text-xs font-mono mb-6 uppercase tracking-wider ${phase.isHero ? "text-cyan-400" : "text-white/30"}`}>
-                                {phase.phase}
-                            </div>
+                                <h3 className={`text-2xl font-bold text-white mb-2 transition-all duration-500 ${isSelected ? "text-3xl drop-shadow-[0_0_10px_rgba(34,211,238,0.5)]" : ""}`}>
+                                    {phase.title}
+                                </h3>
+                                <div className={`text-xs font-mono mb-6 uppercase tracking-wider transition-colors duration-500 ${isSelected ? "text-cyan-400" : "text-white/30"}`}>
+                                    {phase.phase}
+                                </div>
 
-                            <ul className="space-y-4">
-                                {phase.items.map((item, i) => {
-                                    const isString = typeof item === 'string';
-                                    const text = isString ? item : item.text;
-                                    const isHighlight = !isString && item.highlight;
+                                <ul className="space-y-4">
+                                    {phase.items.map((item, i) => {
+                                        const isString = typeof item === 'string';
+                                        const text = isString ? item : item.text;
+                                        const isHighlight = !isString && item.highlight;
 
-                                    return (
-                                        <li key={i} className="flex items-start gap-3">
-                                            <div className={`mt-2 w-1.5 h-1.5 rounded-full flex-shrink-0 
-                                        ${phase.isHero ? "bg-cyan-400" : "bg-white/20"}
-                                    `} />
-                                            <span className={`text-sm leading-relaxed 
-                                        ${isHighlight ? "text-lg font-bold text-transparent bg-clip-text bg-gradient-to-r from-yellow-300 to-amber-300 drop-shadow-[0_0_10px_rgba(252,211,77,0.5)]" :
-                                                    phase.isHero ? "text-emerald-50" : "text-white/50"}
-                                    `}>
-                                                {text}
-                                            </span>
-                                        </li>
-                                    )
-                                })}
-                            </ul>
-                        </motion.div>
-                    ))}
+                                        return (
+                                            <li key={i} className="flex items-start gap-3">
+                                                <div className={`mt-2 w-1.5 h-1.5 rounded-full flex-shrink-0 transition-colors duration-500
+                                                    ${isSelected ? "bg-cyan-400" : "bg-white/20"}
+                                                `} />
+                                                <span className={`text-sm leading-relaxed transition-colors duration-500
+                                                    ${isHighlight && isSelected ? "text-lg font-bold text-transparent bg-clip-text bg-gradient-to-r from-yellow-300 to-amber-300 drop-shadow-[0_0_10px_rgba(252,211,77,0.5)]" :
+                                                        isSelected ? "text-emerald-50" : "text-white/50"}
+                                                `}>
+                                                    {text}
+                                                </span>
+                                            </li>
+                                        )
+                                    })}
+                                </ul>
+                            </motion.div>
+                        );
+                    })}
                 </div>
             </div>
 
             {/* Footer Section */}
             <footer className="bg-[#020d0b] py-16 border-t border-white/5 relative z-10">
                 <div className="container mx-auto px-6">
-                    <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
-                        <div className="col-span-1 md:col-span-1">
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
+                        <div>
                             <h3 className="text-2xl font-bold text-white mb-6">ESGIN</h3>
                             <p className="text-white/40 text-sm leading-relaxed">
                                 The Trust Protocol for ESG. <br />
@@ -135,20 +185,9 @@ export default function RoadmapFooter() {
                         </div>
 
                         <div>
-                            <h4 className="text-white font-bold mb-6">Ecosystem</h4>
-                            <ul className="space-y-4 text-sm text-white/50">
-                                <li><a href="#" className="hover:text-emerald-400 transition-colors">App Download</a></li>
-                                <li><a href="#" className="hover:text-emerald-400 transition-colors">Tokenomics</a></li>
-                                <li><a href="#" className="hover:text-emerald-400 transition-colors">Governance</a></li>
-                            </ul>
-                        </div>
-
-                        <div>
                             <h4 className="text-white font-bold mb-6">Resources</h4>
                             <ul className="space-y-4 text-sm text-white/50">
                                 <li><a href="/ESGIN_Whitepaper.pdf" target="_blank" rel="noopener noreferrer" className="hover:text-emerald-400 transition-colors">Whitepaper</a></li>
-                                <li><a href="#" className="hover:text-emerald-400 transition-colors">Documentation</a></li>
-                                <li><a href="#" className="hover:text-emerald-400 transition-colors">Media Kit</a></li>
                             </ul>
                         </div>
 

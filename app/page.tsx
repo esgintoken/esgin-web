@@ -6,7 +6,6 @@ import AppEngine from "@/components/AppEngine";
 import AIEcosystem from "@/components/AIEcosystem";
 import Tokenomics from "@/components/Tokenomics";
 import TeamLeadership from "@/components/TeamLeadership";
-import StrategicPartners from "@/components/StrategicPartners";
 import MediaInsights from "@/components/MediaInsights";
 import RoadmapFooter from "@/components/RoadmapFooter";
 
@@ -21,7 +20,6 @@ export default function Home() {
       <AIEcosystem />
       <Tokenomics />
       <TeamLeadership />
-      <StrategicPartners />
       <MediaInsights />
       <RoadmapFooter />
     </main>

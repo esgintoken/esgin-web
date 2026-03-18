@@ -19,13 +19,13 @@ const team = [
     link: "https://t.me/xxxxx", // Replace with actual link
   },
   {
-    name: "Cho, Myunghun",
+    name: "Ian Cho",
     title: "CTO · Director",
     linkType: "LinkedIn",
     link: "https://linkedin.com/in/xxxxx", // Replace with actual link
   },
   {
-    name: "Lee, Seunghyun",
+    name: "Brian Lee",
     title: "CBO · Director",
     linkType: "Telegram",
     link: "https://t.me/xxxxx", // Replace with actual link

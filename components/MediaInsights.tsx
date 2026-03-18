@@ -7,42 +7,34 @@ import { useState, useRef, useEffect } from "react";
 const news = [
     {
         id: 1,
-        date: "Jan 10, 2026",
-        category: "Government Partnership",
-        title: "MOU Signed with Indonesian Ministry of Environment",
-        description: "ESGIN chosen as official digital verification partner for the National Trash Bank initiative.",
-        link: "#",
+        date: "Mar 18, 2026",
+        category: "Tokenomics",
+        title: "ESGIN Tokenomics: Long-Term Sustainability",
+        description: "A strong token economy is built on clear allocation, structured vesting, and real utility.",
+        link: "https://medium.com/@esgintoken/esgin-tokenomics-supply-distribution-and-long-term-sustainability-2f684d2df3f0",
     },
     {
         id: 2,
-        date: "Dec 28, 2025",
-        category: "Pilot Report",
-        title: "Jeju Island Pilot: 50% Reduction in Logistics Cost",
-        description: "Our high-tech sorting facility in Jeju demonstrates record-breaking efficiency using AI sorting.",
-        link: "#",
+        date: "Mar 18, 2026",
+        category: "Utility",
+        title: "How ESGIN Token Powers Real-World ESG Actions",
+        description: "The ESGIN Token is not just another digital asset.",
+        link: "https://medium.com/@esgintoken/how-esgin-token-powers-real-world-esg-actions-e5c90ec3e755",
     },
     {
         id: 3,
+        date: "Feb 19, 2026",
+        category: "Introduction",
+        title: "What is ESGIN Token?",
+        description: "ESGIN is an AI-native utility token designed to operate within the ESG-IN ecosystem.",
+        link: "https://medium.com/@esgintoken/what-is-esgin-token-24e4e6b0b83a",
+    },
+    {
+        id: 4,
         date: "Dec 15, 2025",
         category: "Exchange Listing",
         title: "Upcoming Token Listing Announcement",
         description: "ESGIN token will be listed on a top-tier global exchange in Q1 2026. Details coming soon.",
-        link: "#",
-    },
-    {
-        id: 4,
-        date: "Nov 30, 2025",
-        category: "Strategy",
-        title: "Expansion into Vietnam Market",
-        description: "Preliminary talks with Vietnam's recycling consortiums have begun.",
-        link: "#",
-    },
-    {
-        id: 5,
-        date: "Nov 15, 2025",
-        category: "Technology",
-        title: "ESGIN Mainnet Beta Live",
-        description: "The world's first carbon-neutral blockchain network is now live for beta testing.",
         link: "#",
     },
 ];
@@ -169,12 +161,18 @@ export default function MediaInsights() {
                                 {item.description}
                             </p>
 
-                            <div className={`flex items-center gap-2 font-medium text-sm transition-all
-                                ${index === currentIndex ? "text-emerald-400" : "text-white/40 group-hover:text-white"}
-                            `}>
+                            <a
+                                href={item.link}
+                                target={item.link !== "#" ? "_blank" : undefined}
+                                rel={item.link !== "#" ? "noopener noreferrer" : undefined}
+                                className={`flex items-center gap-2 font-medium text-sm transition-all
+                                    ${index === currentIndex ? "text-emerald-400" : "text-white/40 group-hover:text-white"}
+                                `}
+                                onClick={(e) => e.stopPropagation()}
+                            >
                                 Read More
                                 <ArrowUpRight className="w-4 h-4" />
-                            </div>
+                            </a>
                         </motion.div>
                     ))}
                 </motion.div>
