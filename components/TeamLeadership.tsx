@@ -13,7 +13,7 @@ const team = [
     link: "https://linkedin.com/in/xxxxx", // Replace with actual link
   },
   {
-    name: "Brandon Juwon Keam",
+    name: "Brandon Keam",
     title: "CEO · Director",
     linkType: "Telegram",
     link: "https://t.me/xxxxx", // Replace with actual link
