@@ -7,34 +7,34 @@ import { Linkedin, Send, ChevronLeft, ChevronRight } from "lucide-react";
 // Team Data
 const team = [
   {
-    name: "Muthia Eka Pratiwi",
-    title: "Commissioner",
-    linkType: "LinkedIn",
-    link: "https://linkedin.com/in/xxxxx", // Replace with actual link
-  },
-  {
     name: "Brandon Keam",
     title: "CEO · Director",
-    linkType: "Telegram",
-    link: "https://t.me/xxxxx", // Replace with actual link
+    linkType: "LinkedIn" as const,
+    link: "https://www.linkedin.com/in/brandon-keam-esg-in/",
   },
   {
     name: "Ian Cho",
     title: "CTO · Director",
-    linkType: "LinkedIn",
-    link: "https://linkedin.com/in/xxxxx", // Replace with actual link
+    linkType: "LinkedIn" as const,
+    link: "https://www.linkedin.com/in/ian-cho-8a631b3a6/",
   },
   {
     name: "Brian Lee",
     title: "CBO · Director",
-    linkType: "Telegram",
-    link: "https://t.me/xxxxx", // Replace with actual link
+    linkType: "Telegram" as const,
+    link: "https://t.me/Brian_LeeSH",
+  },
+  {
+    name: "Muthia Eka Pratiwi",
+    title: "Commissioner",
+    linkType: null,
+    link: null,
   },
   {
     name: "Deandre Aria Putra",
     title: "Director",
-    linkType: "LinkedIn",
-    link: "https://linkedin.com/in/xxxxx", // Replace with actual link
+    linkType: null,
+    link: null,
   },
 ];
 
@@ -164,19 +164,21 @@ export default function TeamLeadership() {
                       <div className="w-8 h-px bg-white/10 mb-6 group-hover/card:bg-emerald-500/30 transition-colors" />
 
                       {/* Contact Link */}
-                      <a
-                        href={member.link}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center gap-2 text-white/40 hover:text-emerald-400 transition-colors text-sm font-medium py-1 px-3 rounded-full hover:bg-emerald-950/30"
-                      >
-                        {member.linkType === "LinkedIn" ? (
-                          <Linkedin className="w-4 h-4" />
-                        ) : (
-                          <Send className="w-4 h-4" /> // Lucide 'Send' mimics Telegram plane somewhat closely
-                        )}
-                        <span>{member.linkType}</span>
-                      </a>
+                      {member.linkType && member.link && (
+                        <a
+                          href={member.link}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center gap-2 text-white/40 hover:text-emerald-400 transition-colors text-sm font-medium py-1 px-3 rounded-full hover:bg-emerald-950/30"
+                        >
+                          {member.linkType === "LinkedIn" ? (
+                            <Linkedin className="w-4 h-4" />
+                          ) : (
+                            <Send className="w-4 h-4" />
+                          )}
+                          <span>{member.linkType}</span>
+                        </a>
+                      )}
                     </div>
                   </div>
                 </div>
