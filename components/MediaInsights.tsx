@@ -7,6 +7,14 @@ import { useState, useRef, useEffect } from "react";
 const news = [
     {
         id: 1,
+        date: "Mar 24, 2026",
+        category: "Exchange Listing",
+        title: "ESGIN Listing Confirmed on Coinstore: Official Trading to Begin on March 25",
+        description: "ESGIN token is officially confirmed for listing on Coinstore, with trading set to begin on March 25.",
+        link: "https://medium.com/@esgintoken/esgin-listing-confirmed-on-coinstore-official-trading-to-begin-on-march-25-10422ce095f9",
+    },
+    {
+        id: 2,
         date: "Mar 18, 2026",
         category: "Tokenomics",
         title: "ESGIN Tokenomics: Long-Term Sustainability",
@@ -14,7 +22,7 @@ const news = [
         link: "https://medium.com/@esgintoken/esgin-tokenomics-supply-distribution-and-long-term-sustainability-2f684d2df3f0",
     },
     {
-        id: 2,
+        id: 3,
         date: "Mar 18, 2026",
         category: "Utility",
         title: "How ESGIN Token Powers Real-World ESG Actions",
@@ -22,7 +30,7 @@ const news = [
         link: "https://medium.com/@esgintoken/how-esgin-token-powers-real-world-esg-actions-e5c90ec3e755",
     },
     {
-        id: 3,
+        id: 4,
         date: "Feb 19, 2026",
         category: "Introduction",
         title: "What is ESGIN Token?",
@@ -30,7 +38,7 @@ const news = [
         link: "https://medium.com/@esgintoken/what-is-esgin-token-24e4e6b0b83a",
     },
     {
-        id: 4,
+        id: 5,
         date: "Dec 15, 2025",
         category: "Exchange Listing",
         title: "Upcoming Token Listing Announcement",
