@@ -9,32 +9,34 @@ const team = [
   {
     name: "Brandon Keam",
     title: "CEO · Director",
-    linkType: "LinkedIn" as const,
-    link: "https://www.linkedin.com/in/brandon-keam-esg-in/",
+    links: [
+      { type: "LinkedIn" as const, url: "https://www.linkedin.com/in/brandon-keam-esg-in/" },
+      { type: "Telegram" as const, url: "https://t.me/esgin_brandon" },
+    ],
   },
   {
     name: "Ian Cho",
     title: "CTO · Director",
-    linkType: "LinkedIn" as const,
-    link: "https://www.linkedin.com/in/ian-cho-8a631b3a6/",
+    links: [
+      { type: "LinkedIn" as const, url: "https://www.linkedin.com/in/ian-cho-8a631b3a6/" },
+    ],
   },
   {
     name: "Brian Lee",
     title: "CBO · Director",
-    linkType: "Telegram" as const,
-    link: "https://t.me/Brian_LeeSH",
+    links: [
+      { type: "Telegram" as const, url: "https://t.me/Brian_LeeSH" },
+    ],
   },
   {
     name: "Muthia Eka Pratiwi",
     title: "Commissioner",
-    linkType: null,
-    link: null,
+    links: [],
   },
   {
     name: "Deandre Aria Putra",
     title: "Director",
-    linkType: null,
-    link: null,
+    links: [],
   },
 ];
 
@@ -163,21 +165,26 @@ export default function TeamLeadership() {
                       {/* Divider */}
                       <div className="w-8 h-px bg-white/10 mb-6 group-hover/card:bg-emerald-500/30 transition-colors" />
 
-                      {/* Contact Link */}
-                      {member.linkType && member.link && (
-                        <a
-                          href={member.link}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="inline-flex items-center gap-2 text-white/40 hover:text-emerald-400 transition-colors text-sm font-medium py-1 px-3 rounded-full hover:bg-emerald-950/30"
-                        >
-                          {member.linkType === "LinkedIn" ? (
-                            <Linkedin className="w-4 h-4" />
-                          ) : (
-                            <Send className="w-4 h-4" />
-                          )}
-                          <span>{member.linkType}</span>
-                        </a>
+                      {/* Contact Links */}
+                      {member.links.length > 0 && (
+                        <div className="flex items-center gap-3">
+                          {member.links.map((linkItem, linkIdx) => (
+                            <a
+                              key={linkIdx}
+                              href={linkItem.url}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="inline-flex items-center gap-2 text-white/40 hover:text-emerald-400 transition-colors text-sm font-medium py-1 px-3 rounded-full hover:bg-emerald-950/30"
+                            >
+                              {linkItem.type === "LinkedIn" ? (
+                                <Linkedin className="w-4 h-4" />
+                              ) : (
+                                <Send className="w-4 h-4" />
+                              )}
+                              <span>{linkItem.type}</span>
+                            </a>
+                          ))}
+                        </div>
                       )}
                     </div>
                   </div>
