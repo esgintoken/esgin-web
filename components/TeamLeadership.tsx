@@ -15,10 +15,17 @@ const team = [
     ],
   },
   {
-    name: "Ian Cho",
-    title: "CTO · Director",
+    name: "Muthia Eka Pratiwi",
+    title: "Commissioner",
     links: [
-      { type: "LinkedIn" as const, url: "https://www.linkedin.com/in/ian-cho-8a631b3a6/" },
+      { type: "Telegram" as const, url: "https://t.me/itsmemuthia" },
+    ],
+  },
+  {
+    name: "Deandre Aria Putra",
+    title: "Director",
+    links: [
+      { type: "Telegram" as const, url: "#" },
     ],
   },
   {
@@ -29,14 +36,11 @@ const team = [
     ],
   },
   {
-    name: "Muthia Eka Pratiwi",
-    title: "Commissioner",
-    links: [],
-  },
-  {
-    name: "Deandre Aria Putra",
-    title: "Director",
-    links: [],
+    name: "Ian Cho",
+    title: "CTO · Director",
+    links: [
+      { type: "LinkedIn" as const, url: "https://www.linkedin.com/in/ian-cho-8a631b3a6/" },
+    ],
   },
 ];
 
