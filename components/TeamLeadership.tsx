@@ -25,7 +25,7 @@ const team = [
     name: "Deandre Aria Putra",
     title: "Director",
     links: [
-      { type: "Telegram" as const, url: "#" },
+      { type: "Telegram" as const, url: "https://t.me/deandreariap" },
     ],
   },
   {
