@@ -7,6 +7,14 @@ import { useState, useRef, useEffect } from "react";
 const news = [
     {
         id: 1,
+        date: "May 6, 2026",
+        category: "Ecosystem",
+        title: "ESG-IN Expands Its Ecosystem in Indonesia Through Carbon Market and ESG Infrastructure Collaboration",
+        description: "The future of ESG is no longer limited to reports, promises, or corporate declarations.",
+        link: "https://medium.com/@esgintoken/esg-in-expands-its-ecosystem-in-indonesia-through-carbon-market-and-esg-infrastructure-53468d0eeef1",
+    },
+    {
+        id: 2,
         date: "Mar 24, 2026",
         category: "Exchange Listing",
         title: "ESGIN Listing Confirmed on Coinstore: Official Trading to Begin on March 25",
@@ -14,7 +22,7 @@ const news = [
         link: "https://medium.com/@esgintoken/esgin-listing-confirmed-on-coinstore-official-trading-to-begin-on-march-25-10422ce095f9",
     },
     {
-        id: 2,
+        id: 3,
         date: "Mar 18, 2026",
         category: "Tokenomics",
         title: "ESGIN Tokenomics: Long-Term Sustainability",
@@ -22,15 +30,15 @@ const news = [
         link: "https://medium.com/@esgintoken/esgin-tokenomics-supply-distribution-and-long-term-sustainability-2f684d2df3f0",
     },
     {
-        id: 3,
+        id: 4,
         date: "Mar 18, 2026",
         category: "Utility",
         title: "How ESGIN Token Powers Real-World ESG Actions",
         description: "The ESGIN Token is not just another digital asset.",
-        link: "https://medium.com/@esgintoken/how-esgin-token-powers-real-world-esg-actions-e5c90ec3e755",
+        link: "https://medium.com/@esgintoken/how-esGIN-token-powers-real-world-esg-actions-e5c90ec3e755",
     },
     {
-        id: 4,
+        id: 5,
         date: "Feb 19, 2026",
         category: "Introduction",
         title: "What is ESGIN Token?",
@@ -38,7 +46,7 @@ const news = [
         link: "https://medium.com/@esgintoken/what-is-esgin-token-24e4e6b0b83a",
     },
     {
-        id: 5,
+        id: 6,
         date: "Dec 15, 2025",
         category: "Exchange Listing",
         title: "Upcoming Token Listing Announcement",
