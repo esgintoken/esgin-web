@@ -7,6 +7,14 @@ import { useState, useRef, useEffect } from "react";
 const news = [
     {
         id: 1,
+        date: "Jun 5, 2026",
+        category: "Airdrop",
+        title: "ESG-in Web App Officially Launches in Indonesia, Completing the First Community Airdrop",
+        description: "To celebrate this deployment and reward our early ecosystem participants in the region, the Foundation has successfully executed its first community airdrop.",
+        link: "https://medium.com/@esgintoken/esg-in-web-app-officially-launches-in-indonesia-completing-the-first-community-airdrop-1ba9366adc62",
+    },
+    {
+        id: 2,
         date: "May 6, 2026",
         category: "Ecosystem",
         title: "ESG-IN Expands Its Ecosystem in Indonesia Through Carbon Market and ESG Infrastructure Collaboration",
@@ -14,7 +22,7 @@ const news = [
         link: "https://medium.com/@esgintoken/esg-in-expands-its-ecosystem-in-indonesia-through-carbon-market-and-esg-infrastructure-53468d0eeef1",
     },
     {
-        id: 2,
+        id: 3,
         date: "Mar 24, 2026",
         category: "Exchange Listing",
         title: "ESGIN Listing Confirmed on Coinstore: Official Trading to Begin on March 25",
@@ -22,7 +30,7 @@ const news = [
         link: "https://medium.com/@esgintoken/esgin-listing-confirmed-on-coinstore-official-trading-to-begin-on-march-25-10422ce095f9",
     },
     {
-        id: 3,
+        id: 4,
         date: "Mar 18, 2026",
         category: "Tokenomics",
         title: "ESGIN Tokenomics: Long-Term Sustainability",
@@ -30,7 +38,7 @@ const news = [
         link: "https://medium.com/@esgintoken/esgin-tokenomics-supply-distribution-and-long-term-sustainability-2f684d2df3f0",
     },
     {
-        id: 4,
+        id: 5,
         date: "Mar 18, 2026",
         category: "Utility",
         title: "How ESGIN Token Powers Real-World ESG Actions",
@@ -38,7 +46,7 @@ const news = [
         link: "https://medium.com/@esgintoken/how-esGIN-token-powers-real-world-esg-actions-e5c90ec3e755",
     },
     {
-        id: 5,
+        id: 6,
         date: "Feb 19, 2026",
         category: "Introduction",
         title: "What is ESGIN Token?",
@@ -46,7 +54,7 @@ const news = [
         link: "https://medium.com/@esgintoken/what-is-esgin-token-24e4e6b0b83a",
     },
     {
-        id: 6,
+        id: 7,
         date: "Dec 15, 2025",
         category: "Exchange Listing",
         title: "Upcoming Token Listing Announcement",
