@@ -7,6 +7,7 @@ import AIEcosystem from "@/components/AIEcosystem";
 import Tokenomics from "@/components/Tokenomics";
 import TeamLeadership from "@/components/TeamLeadership";
 import MediaInsights from "@/components/MediaInsights";
+import ExploreEcosystem from "@/components/ExploreEcosystem";
 import RoadmapFooter from "@/components/RoadmapFooter";
 
 export default function Home() {
@@ -21,6 +22,7 @@ export default function Home() {
       <Tokenomics />
       <TeamLeadership />
       <MediaInsights />
+      <ExploreEcosystem />
       <RoadmapFooter />
     </main>
   );

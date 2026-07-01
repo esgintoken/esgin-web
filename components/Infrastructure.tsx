@@ -1,114 +1,101 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { MapPin, Building2, Globe, ArrowUpRight } from "lucide-react";
 
 const locations = [
     {
         country: "Indonesia",
         title: "The Main Engine",
-        description: "Transforming 16,000 Government Trash Banks. Injecting liquidity to restart the stalled engine.",
-        stats: "16k Sites",
-        icon: Globe,
-        color: "from-emerald-400 to-cyan-400",
-        delay: 0.2,
-        highlight: true,
+        description: "Transforming 16,000 government trash banks into verified nodes, injecting liquidity and data capture directly into our on-chain tracking registry.",
+        stats: "16,000+ Nodes",
+        detail: "Primary Operations"
     },
     {
-        country: "Korea",
-        title: "High-Tech Sorting",
-        description: "Partnered with Local Governments & Corps. Implementing advanced data sorting infrastructure.",
-        stats: "Gov Partners",
-        icon: Building2,
-        color: "from-blue-400 to-indigo-400",
-        delay: 0.3,
-        highlight: false,
+        country: "South Korea",
+        title: "Data Optimization",
+        description: "Partnering with local municipal waste collection programs and corporate logistics systems to deploy high-resolution data sorting frameworks.",
+        stats: "Government Partners",
+        detail: "Tech Deployment"
     },
     {
         country: "Cambodia",
-        title: "Edjai Network",
-        description: "Integrated with local Edjai network for grassroots collection and data verification.",
-        stats: "Network Integrated",
-        icon: MapPin,
-        color: "from-orange-400 to-amber-400",
-        delay: 0.4,
-        highlight: false,
-    },
+        title: "Edjai Integration",
+        description: "Connecting grassroots collectors and informal networks through local partnerships to log waste origins and verify micro-action data.",
+        stats: "Grassroots Network",
+        detail: "Scale Initiative"
+    }
 ];
 
 export default function Infrastructure() {
     return (
-        <section id="infrastructure" className="py-24 relative overflow-hidden">
-            {/* Background Texture */}
-            <div className="absolute inset-0 bg-[#020d0b] opacity-80 -z-20" />
-            <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-emerald-900/20 via-[#051a14] to-[#051a14] -z-10" />
+        <section id="infrastructure" className="py-32 bg-[#020d0b] relative overflow-hidden border-t border-emerald-950/20">
+            {/* Soft Ambient Light */}
+            <div className="absolute top-0 right-1/4 w-[400px] h-[400px] bg-emerald-500/5 rounded-full blur-[120px] pointer-events-none" />
 
-            <div className="container mx-auto px-6">
-                <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.6 }}
-                    className="text-center mb-16"
-                >
-                    <span className="text-emerald-400 font-mono tracking-widest text-sm uppercase">
+            <div className="container mx-auto px-6 relative z-10">
+                
+                {/* Header */}
+                <div className="max-w-4xl mb-24">
+                    <motion.span 
+                        initial={{ opacity: 0 }}
+                        whileInView={{ opacity: 0.6 }}
+                        viewport={{ once: true }}
+                        className="text-xs font-mono tracking-widest text-emerald-400 uppercase block mb-4"
+                    >
                         Global Infrastructure
-                    </span>
-                    <h2 className="mt-4 text-3xl md:text-5xl font-bold text-white tracking-tight leading-tight">
-                        Turning Infrastructure Into <br className="hidden md:block" />
-                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-cyan-400">
-                            Data Mines
+                    </motion.span>
+                    <motion.h2 
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.6 }}
+                        className="text-4xl md:text-6xl font-bold tracking-tight text-white leading-tight"
+                    >
+                        Turning Environmental Action <br />
+                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-teal-300">
+                            Into Digital Assets.
                         </span>
-                    </h2>
-                </motion.div>
+                    </motion.h2>
+                </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
+                {/* Minimal, Typography-First Locations Grid */}
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-12 lg:gap-16">
                     {locations.map((loc, index) => (
                         <motion.div
                             key={loc.country}
-                            initial={{ opacity: 0, y: 30 }}
+                            initial={{ opacity: 0, y: 25 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
-                            transition={{ duration: 0.6, delay: loc.delay }}
-                            className={`group relative p-8 rounded-2xl border transition-all duration-500 ${loc.highlight
-                                ? "bg-emerald-900/20 border-emerald-500/50 hover:bg-emerald-900/30"
-                                : "bg-white/5 border-white/10 hover:bg-white/10"
-                                }`}
+                            transition={{ duration: 0.6, delay: index * 0.1 }}
+                            className="flex flex-col justify-between border-t border-emerald-500/10 pt-8 group"
                         >
-                            {/* Country Badge */}
-                            <div className="flex items-center justify-between mb-6">
-                                <div className="flex items-center gap-2">
-                                    <div className={`p-2 rounded-lg bg-gradient-to-br ${loc.color} bg-opacity-10`}>
-                                        <loc.icon className="w-5 h-5 text-white" />
-                                    </div>
-                                    <h3 className="text-xl font-bold text-white">{loc.country}</h3>
-                                </div>
-                                {loc.highlight && (
-                                    <span className="px-3 py-1 rounded-full bg-emerald-500/20 text-emerald-400 text-xs font-bold border border-emerald-500/30">
-                                        MAIN FOCUS
+                            <div>
+                                <div className="flex items-center justify-between mb-8">
+                                    <span className="text-xs font-mono text-emerald-400 uppercase tracking-widest">
+                                        {loc.detail}
                                     </span>
-                                )}
+                                    <span className="text-sm font-semibold text-white">
+                                        {loc.country}
+                                    </span>
+                                </div>
+
+                                <h3 className="text-2xl font-bold text-white mb-4 tracking-tight">
+                                    {loc.title}
+                                </h3>
+                                <p className="text-emerald-100/60 text-sm leading-relaxed font-light mb-12">
+                                    {loc.description}
+                                </p>
                             </div>
 
-                            <h4 className="text-lg font-semibold text-emerald-100 mb-2 group-hover:text-white transition-colors">
-                                {loc.title}
-                            </h4>
-                            <p className="text-emerald-100/60 text-sm leading-relaxed mb-6">
-                                {loc.description}
-                            </p>
-
-                            <div className="pt-6 border-t border-white/5 flex items-center justify-between">
-                                <span className={`text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r ${loc.color}`}>
+                            <div className="mt-auto">
+                                <div className="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-teal-300 tracking-tight font-mono">
                                     {loc.stats}
-                                </span>
-                                <ArrowUpRight className="w-5 h-5 text-white/30 group-hover:text-white transition-colors" />
+                                </div>
                             </div>
-
-                            {/* Hover Glow Effect */}
-                            <div className={`absolute inset-0 rounded-2xl bg-gradient-to-br ${loc.color} opacity-0 group-hover:opacity-5 transition-opacity duration-500 pointer-events-none`} />
                         </motion.div>
                     ))}
                 </div>
+
             </div>
         </section>
     );
