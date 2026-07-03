@@ -9,6 +9,7 @@ const team = [
   {
     name: "Brandon Keam",
     title: "CEO · Director",
+    image: "/images/brandon.png",
     links: [
       { type: "LinkedIn" as const, url: "https://www.linkedin.com/in/brandon-keam-esg-in/" },
       { type: "Telegram" as const, url: "https://t.me/esgin_brandon" },
@@ -17,32 +18,110 @@ const team = [
   {
     name: "Muthia Eka Pratiwi",
     title: "Commissioner",
+    image: "/images/mutia.png",
     links: [
+      { type: "LinkedIn" as const, url: "https://www.linkedin.com/in/muthia-eka-pratiwi-9b779626a/" },
       { type: "Telegram" as const, url: "https://t.me/itsmemuthia" },
     ],
   },
   {
     name: "Deandre Aria Putra",
     title: "Director",
+    image: "/images/andre.png",
     links: [
+      { type: "LinkedIn" as const, url: "https://www.linkedin.com/in/deandre-aria-putra-8939a6352/" },
       { type: "Telegram" as const, url: "https://t.me/deandreariap" },
     ],
   },
   {
     name: "Brian Lee",
     title: "CBO · Director",
+    image: "/images/brian.png",
     links: [
+      { type: "LinkedIn" as const, url: "https://www.linkedin.com/in/brian-lee-3195973a6/" },
       { type: "Telegram" as const, url: "https://t.me/Brian_LeeSH" },
     ],
   },
   {
     name: "Ian Cho",
     title: "CTO · Director",
+    image: "/images/ian.png",
     links: [
       { type: "LinkedIn" as const, url: "https://www.linkedin.com/in/ian-cho-8a631b3a6/" },
     ],
   },
 ];
+
+interface TeamMember {
+  name: string;
+  title: string;
+  image: string;
+  links: { type: "LinkedIn" | "Telegram"; url: string }[];
+}
+
+function TeamCard({ member }: { member: TeamMember }) {
+  return (
+    <div
+      className="perspective-1000 w-full h-[400px]"
+    >
+      <motion.div
+        className="relative w-full h-full transform-style-3d"
+        whileHover={{ rotateY: 180 }}
+        transition={{ duration: 0.6, ease: "easeInOut" }}
+      >
+        {/* Front of the card */}
+        <div className="absolute inset-0 w-full h-full backface-hidden rounded-2xl bg-gradient-to-br from-[#0c1615] to-[#050e0c] border border-white/5 shadow-xl flex flex-col p-8 items-center justify-center">
+          <div className="w-32 h-32 rounded-full overflow-hidden mb-6 border-2 border-emerald-500/20 hover:border-emerald-500/50 transition-all duration-300 relative bg-emerald-950/20">
+            <img
+              src={member.image}
+              alt={member.name}
+              className="w-full h-full object-cover"
+            />
+          </div>
+          <h3 className="text-xl md:text-2xl font-bold text-white mb-2 text-center">
+            {member.name}
+          </h3>
+          <p className="text-emerald-500/90 text-sm font-medium uppercase tracking-wide text-center">
+            {member.title}
+          </p>
+          <span className="text-white/30 text-xs mt-auto">Hover to view details</span>
+        </div>
+
+        {/* Back of the card */}
+        <div className="absolute inset-0 w-full h-full backface-hidden rounded-2xl bg-gradient-to-br from-[#0c1615] to-[#050e0c] border border-white/5 shadow-xl flex flex-col p-8 items-center justify-center [transform:rotateY(180deg)]">
+          <h3 className="text-xl font-bold text-white mb-1 text-center">
+            {member.name}
+          </h3>
+          <p className="text-emerald-500/90 text-xs font-medium uppercase tracking-wide mb-6 text-center">
+            {member.title}
+          </p>
+
+          <div className="w-8 h-px bg-white/10 mb-6" />
+
+          {/* Contact Links */}
+          <div className="flex flex-col gap-3 w-full max-w-[200px]">
+            {member.links.map((linkItem, linkIdx) => (
+              <a
+                key={linkIdx}
+                href={linkItem.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center gap-2 text-white/70 hover:text-emerald-400 transition-colors text-sm font-medium py-2.5 px-4 rounded-xl bg-white/5 hover:bg-emerald-950/30 border border-white/10 hover:border-emerald-500/30"
+              >
+                {linkItem.type === "LinkedIn" ? (
+                  <Linkedin className="w-4 h-4" />
+                ) : (
+                  <Send className="w-4 h-4" />
+                )}
+                <span>{linkItem.type}</span>
+              </a>
+            ))}
+          </div>
+        </div>
+      </motion.div>
+    </div>
+  );
+}
 
 export default function TeamLeadership() {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -76,6 +155,13 @@ export default function TeamLeadership() {
   };
 
   const handlePrev = () => {
+    if (currentIndex > 0) {
+      setCurrentIndex((prev) => prev + 1); // wait, should be prev - 1, let's fix that too
+      setCurrentIndex((prev) => prev - 1);
+    }
+  };
+
+  const handlePrevFixed = () => {
     if (currentIndex > 0) {
       setCurrentIndex((prev) => prev - 1);
     }
@@ -114,12 +200,9 @@ export default function TeamLeadership() {
         {/* Carousel Container */}
         <div className="relative max-w-6xl mx-auto group">
 
-          {/* Controls - Absolute positioned on desktop, maybe below on mobile if preferred, 
-              but requested 'left/right arrow buttons' implies side or convenient placement. 
-              Let's put them on sides for desktop, hiding if disabled. */}
-
+          {/* Controls */}
           <button
-            onClick={handlePrev}
+            onClick={handlePrevFixed}
             disabled={currentIndex === 0}
             aria-label="Previous Team Member"
             className={`absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 md:-translate-x-12 z-20 
@@ -156,42 +239,7 @@ export default function TeamLeadership() {
                   className="px-3"
                   style={{ width: `${100 / totalItems}%` }} // Each item takes up uniform width in the flex container
                 >
-                  <div className="h-full flex flex-col p-8 rounded-2xl bg-gradient-to-br from-[#0c1615] to-[#050e0c] border border-white/5 shadow-xl hover:border-emerald-500/20 hover:shadow-emerald-900/10 transition-all duration-300 group/card">
-                    {/* Content */}
-                    <div className="flex-1 flex flex-col justify-center items-center text-center">
-                      <h3 className="text-xl md:text-2xl font-bold text-white mb-2 group-hover/card:text-emerald-50 transition-colors">
-                        {member.name}
-                      </h3>
-                      <p className="text-emerald-500/90 text-sm font-medium uppercase tracking-wide mb-6">
-                        {member.title}
-                      </p>
-
-                      {/* Divider */}
-                      <div className="w-8 h-px bg-white/10 mb-6 group-hover/card:bg-emerald-500/30 transition-colors" />
-
-                      {/* Contact Links */}
-                      {member.links.length > 0 && (
-                        <div className="flex items-center gap-3">
-                          {member.links.map((linkItem, linkIdx) => (
-                            <a
-                              key={linkIdx}
-                              href={linkItem.url}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="inline-flex items-center gap-2 text-white/40 hover:text-emerald-400 transition-colors text-sm font-medium py-1 px-3 rounded-full hover:bg-emerald-950/30"
-                            >
-                              {linkItem.type === "LinkedIn" ? (
-                                <Linkedin className="w-4 h-4" />
-                              ) : (
-                                <Send className="w-4 h-4" />
-                              )}
-                              <span>{linkItem.type}</span>
-                            </a>
-                          ))}
-                        </div>
-                      )}
-                    </div>
-                  </div>
+                  <TeamCard member={member} />
                 </div>
               ))}
             </motion.div>

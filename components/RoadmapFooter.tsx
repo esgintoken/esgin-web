@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Twitter, Disc as Discord, Github, CheckCircle2, Zap, Rocket, Cuboid as Cube, Send, BookOpen } from "lucide-react";
+import { Twitter, Disc as Discord, Github, CheckCircle2, Zap, Rocket, Cuboid as Cube, Send, BookOpen, Youtube, Instagram, Facebook } from "lucide-react";
 
 const phases = [
     {
@@ -188,6 +188,7 @@ export default function RoadmapFooter() {
                             <h4 className="text-white font-bold mb-6">Resources</h4>
                             <ul className="space-y-4 text-sm text-white/50">
                                 <li><a href="/ESGIN_Whitepaper.pdf" target="_blank" rel="noopener noreferrer" className="hover:text-emerald-400 transition-colors">Whitepaper</a></li>
+                                <li><a href="/esgin_businesspaper.pdf" target="_blank" rel="noopener noreferrer" className="hover:text-emerald-400 transition-colors">Businesspaper</a></li>
                             </ul>
                         </div>
 
@@ -205,6 +206,20 @@ export default function RoadmapFooter() {
                                 </a>
                                 <a href="https://github.com/esgintoken/" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-white/60 hover:bg-emerald-500 hover:text-white transition-all">
                                     <Github className="w-5 h-5" />
+                                </a>
+                                <a href="https://www.tiktok.com/@esgin.global" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-white/60 hover:bg-emerald-500 hover:text-white transition-all" title="TikTok">
+                                    <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.02 1.59 4.23.97 1.2 2.27 2.05 3.73 2.45v3.85c-1.39-.12-2.74-.63-3.88-1.48-.99-.74-1.77-1.74-2.28-2.88v7.92c-.08 2.22-.96 4.34-2.5 5.89-1.63 1.63-3.92 2.53-6.28 2.5-2.28.02-4.48-.82-6.09-2.35C.79 17.84-.04 15.65 0 13.37c-.04-2.35.84-4.63 2.44-6.31 1.66-1.67 3.98-2.55 6.32-2.43.05 1.34-.02 2.68-.02 4.02-1.36-.14-2.73.27-3.72 1.22-.96.95-1.46 2.3-1.35 3.65.08 1.34.78 2.57 1.86 3.32 1.05.74 2.37.99 3.6.67 1.2-.31 2.22-1.15 2.76-2.28.43-.88.66-1.85.66-2.83V0z"/>
+                                    </svg>
+                                </a>
+                                <a href="https://www.youtube.com/@esginglobal" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-white/60 hover:bg-emerald-500 hover:text-white transition-all" title="YouTube">
+                                    <Youtube className="w-5 h-5" />
+                                </a>
+                                <a href="https://www.instagram.com/esgin.official/" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-white/60 hover:bg-emerald-500 hover:text-white transition-all" title="Instagram">
+                                    <Instagram className="w-5 h-5" />
+                                </a>
+                                <a href="https://www.facebook.com/esginglobal" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-white/60 hover:bg-emerald-500 hover:text-white transition-all" title="Facebook">
+                                    <Facebook className="w-5 h-5" />
                                 </a>
                             </div>
                         </div>
