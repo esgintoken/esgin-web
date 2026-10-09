@@ -198,7 +198,7 @@ export default function RoadmapFooter() {
                                 <a href="https://medium.com/@esgintoken" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-white/60 hover:bg-emerald-500 hover:text-white transition-all">
                                     <BookOpen className="w-5 h-5" />
                                 </a>
-                                <a href="https://x.com/esgintoken" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-white/60 hover:bg-emerald-500 hover:text-white transition-all">
+                                <a href="https://x.com/esginglobal" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-white/60 hover:bg-emerald-500 hover:text-white transition-all">
                                     <Twitter className="w-5 h-5" />
                                 </a>
                                 <a href="https://t.me/ESGINToken" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-white/60 hover:bg-emerald-500 hover:text-white transition-all">
