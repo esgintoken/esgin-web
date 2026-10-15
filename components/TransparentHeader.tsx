@@ -3,9 +3,11 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useState, useEffect } from "react";
+import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
 import { Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+
 
 const navLinks = [
     { name: "Market Gap", href: "#market-gap" },
@@ -15,8 +17,12 @@ const navLinks = [
 ];
 
 export default function TransparentHeader() {
+    const pathname = usePathname();
+    const isHome = pathname === "/";
     const [isScrolled, setIsScrolled] = useState(false);
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+    const getHref = (href: string) => (isHome ? href : `/${href}`);
 
     useEffect(() => {
         const handleScroll = () => {
@@ -58,7 +64,7 @@ export default function TransparentHeader() {
                     {navLinks.map((link) => (
                         <a
                             key={link.name}
-                            href={link.href}
+                            href={getHref(link.href)}
                             className="text-sm font-medium text-emerald-100/80 hover:text-emerald-400 transition-colors"
                         >
                             {link.name}
@@ -95,7 +101,7 @@ export default function TransparentHeader() {
                         {navLinks.map((link) => (
                             <a
                                 key={link.name}
-                                href={link.href}
+                                href={getHref(link.href)}
                                 onClick={() => setIsMobileMenuOpen(false)}
                                 className="text-lg font-medium text-emerald-100/80 hover:text-emerald-400 transition-colors"
                             >

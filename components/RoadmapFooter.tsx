@@ -1,7 +1,9 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
+
 import { Twitter, Disc as Discord, Github, CheckCircle2, Zap, Rocket, Cuboid as Cube, Send, BookOpen, Youtube, Instagram, Facebook } from "lucide-react";
 
 const phases = [
@@ -80,97 +82,101 @@ function getOrderedPhases(selectedIndex: number) {
     return ordered;
 }
 
-export default function RoadmapFooter() {
+export default function RoadmapFooter({ hideRoadmap = false }: { hideRoadmap?: boolean }) {
     const [selectedIndex, setSelectedIndex] = useState(1); // Default: Phase 2
 
     const orderedPhases = getOrderedPhases(selectedIndex);
 
     return (
-        <section className="bg-[#020d0b] pt-32 pb-0 relative overflow-hidden">
-            {/* Background Gradients */}
-            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[800px] bg-cyan-900/20 blur-[150px] rounded-full pointer-events-none" />
+        <section className={`bg-[#020d0b] pb-0 relative overflow-hidden ${hideRoadmap ? "pt-0" : "pt-32"}`}>
+            {!hideRoadmap && (
+                <>
+                    {/* Background Gradients */}
+                    <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[800px] bg-cyan-900/20 blur-[150px] rounded-full pointer-events-none" />
 
-            {/* Roadmap Content */}
-            <div className="container mx-auto px-6 mb-48 relative z-10">
-                <div className="text-center mb-24">
-                    <h2 className="text-4xl md:text-6xl font-bold text-white tracking-tight mb-4">
-                        Roadmap
-                    </h2>
-                    <p className="text-emerald-100/50 font-light">
-                        Our journey to digitize environmental action.
-                    </p>
-                </div>
+                    {/* Roadmap Content */}
+                    <div className="container mx-auto px-6 mb-48 relative z-10">
+                        <div className="text-center mb-24">
+                            <h2 className="text-4xl md:text-6xl font-bold text-white tracking-tight mb-4">
+                                Roadmap
+                            </h2>
+                            <p className="text-emerald-100/50 font-light">
+                                Our journey to digitize environmental action.
+                            </p>
+                        </div>
 
-                {/* Center Stage Horizontal Grid */}
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-4 items-center max-w-6xl mx-auto">
-                    {orderedPhases.map((phase) => {
-                        const originalIndex = phases.indexOf(phase);
-                        const isSelected = originalIndex === selectedIndex;
+                        {/* Center Stage Horizontal Grid */}
+                        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-4 items-center max-w-6xl mx-auto">
+                            {orderedPhases.map((phase) => {
+                                const originalIndex = phases.indexOf(phase);
+                                const isSelected = originalIndex === selectedIndex;
 
-                        return (
-                            <motion.div
-                                key={phase.phase}
-                                layout
-                                initial={{ opacity: 0, y: 50 }}
-                                whileInView={{ opacity: 1, y: 0 }}
-                                viewport={{ once: true }}
-                                transition={{ duration: 0.5, layout: { type: "spring", stiffness: 300, damping: 30 } }}
-                                className={`relative p-8 rounded-2xl border backdrop-blur-sm flex flex-col h-full justify-start transition-all duration-500 ${getCardStyle(isSelected, phase.accentColor)}`}
-                                onClick={() => setSelectedIndex(originalIndex)}
-                            >
-                                {/* Pulsing Border for Selected */}
-                                {isSelected && (
+                                return (
                                     <motion.div
-                                        className="absolute inset-0 rounded-2xl border border-cyan-400 opacity-50 pointer-events-none"
-                                        animate={{ opacity: [0.3, 0.6, 0.3] }}
-                                        transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-                                    />
-                                )}
-
-                                <div className="flex items-center justify-between mb-8">
-                                    <div className={`w-10 h-10 rounded-full flex items-center justify-center transition-colors duration-500
-                                        ${isSelected ? "bg-cyan-400 text-[#051a14]" : "bg-white/5 text-white/50"}`}
+                                        key={phase.phase}
+                                        layout
+                                        initial={{ opacity: 0, y: 50 }}
+                                        whileInView={{ opacity: 1, y: 0 }}
+                                        viewport={{ once: true }}
+                                        transition={{ duration: 0.5, layout: { type: "spring", stiffness: 300, damping: 30 } }}
+                                        className={`relative p-8 rounded-2xl border backdrop-blur-sm flex flex-col h-full justify-start transition-all duration-500 ${getCardStyle(isSelected, phase.accentColor)}`}
+                                        onClick={() => setSelectedIndex(originalIndex)}
                                     >
-                                        <phase.icon className="w-5 h-5" />
-                                    </div>
-                                    <span className={`px-3 py-1 rounded-full text-[10px] font-bold uppercase border tracking-wide transition-all duration-500 ${getBadgeStyle(isSelected, phase.accentColor)}`}>
-                                        {phase.status}
-                                    </span>
-                                </div>
+                                        {/* Pulsing Border for Selected */}
+                                        {isSelected && (
+                                            <motion.div
+                                                className="absolute inset-0 rounded-2xl border border-cyan-400 opacity-50 pointer-events-none"
+                                                animate={{ opacity: [0.3, 0.6, 0.3] }}
+                                                transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+                                            />
+                                        )}
 
-                                <h3 className={`text-2xl font-bold text-white mb-2 transition-all duration-500 ${isSelected ? "text-3xl drop-shadow-[0_0_10px_rgba(34,211,238,0.5)]" : ""}`}>
-                                    {phase.title}
-                                </h3>
-                                <div className={`text-xs font-mono mb-6 uppercase tracking-wider transition-colors duration-500 ${isSelected ? "text-cyan-400" : "text-white/30"}`}>
-                                    {phase.phase}
-                                </div>
+                                        <div className="flex items-center justify-between mb-8">
+                                            <div className={`w-10 h-10 rounded-full flex items-center justify-center transition-colors duration-500
+                                                ${isSelected ? "bg-cyan-400 text-[#051a14]" : "bg-white/5 text-white/50"}`}
+                                            >
+                                                <phase.icon className="w-5 h-5" />
+                                            </div>
+                                            <span className={`px-3 py-1 rounded-full text-[10px] font-bold uppercase border tracking-wide transition-all duration-500 ${getBadgeStyle(isSelected, phase.accentColor)}`}>
+                                                {phase.status}
+                                            </span>
+                                        </div>
 
-                                <ul className="space-y-4">
-                                    {phase.items.map((item, i) => {
-                                        const isString = typeof item === 'string';
-                                        const text = isString ? item : item.text;
-                                        const isHighlight = !isString && item.highlight;
+                                        <h3 className={`text-2xl font-bold text-white mb-2 transition-all duration-500 ${isSelected ? "text-3xl drop-shadow-[0_0_10px_rgba(34,211,238,0.5)]" : ""}`}>
+                                            {phase.title}
+                                        </h3>
+                                        <div className={`text-xs font-mono mb-6 uppercase tracking-wider transition-colors duration-500 ${isSelected ? "text-cyan-400" : "text-white/30"}`}>
+                                            {phase.phase}
+                                        </div>
 
-                                        return (
-                                            <li key={i} className="flex items-start gap-3">
-                                                <div className={`mt-2 w-1.5 h-1.5 rounded-full flex-shrink-0 transition-colors duration-500
-                                                    ${isSelected ? "bg-cyan-400" : "bg-white/20"}
-                                                `} />
-                                                <span className={`text-sm leading-relaxed transition-colors duration-500
-                                                    ${isHighlight && isSelected ? "text-lg font-bold text-transparent bg-clip-text bg-gradient-to-r from-yellow-300 to-amber-300 drop-shadow-[0_0_10px_rgba(252,211,77,0.5)]" :
-                                                        isSelected ? "text-emerald-50" : "text-white/50"}
-                                                `}>
-                                                    {text}
-                                                </span>
-                                            </li>
-                                        )
-                                    })}
-                                </ul>
-                            </motion.div>
-                        );
-                    })}
-                </div>
-            </div>
+                                        <ul className="space-y-4">
+                                            {phase.items.map((item, i) => {
+                                                const isString = typeof item === 'string';
+                                                const text = isString ? item : item.text;
+                                                const isHighlight = !isString && item.highlight;
+
+                                                return (
+                                                    <li key={i} className="flex items-start gap-3">
+                                                        <div className={`mt-2 w-1.5 h-1.5 rounded-full flex-shrink-0 transition-colors duration-500
+                                                            ${isSelected ? "bg-cyan-400" : "bg-white/20"}
+                                                        `} />
+                                                        <span className={`text-sm leading-relaxed transition-colors duration-500
+                                                            ${isHighlight && isSelected ? "text-lg font-bold text-transparent bg-clip-text bg-gradient-to-r from-yellow-300 to-amber-300 drop-shadow-[0_0_10px_rgba(252,211,77,0.5)]" :
+                                                                isSelected ? "text-emerald-50" : "text-white/50"}
+                                                        `}>
+                                                            {text}
+                                                        </span>
+                                                    </li>
+                                                )
+                                            })}
+                                        </ul>
+                                    </motion.div>
+                                );
+                            })}
+                        </div>
+                    </div>
+                </>
+            )}
 
             {/* Footer Section */}
             <footer className="bg-[#020d0b] py-16 border-t border-white/5 relative z-10">
@@ -189,6 +195,7 @@ export default function RoadmapFooter() {
                             <ul className="space-y-4 text-sm text-white/50">
                                 <li><a href="/ESGIN_Whitepaper.pdf" target="_blank" rel="noopener noreferrer" className="hover:text-emerald-400 transition-colors">Whitepaper</a></li>
                                 <li><a href="/esgin_businesspaper.pdf" target="_blank" rel="noopener noreferrer" className="hover:text-emerald-400 transition-colors">Businesspaper</a></li>
+                                <li><Link href="/media" className="hover:text-emerald-400 transition-colors">Media Coverage</Link></li>
                             </ul>
                         </div>
 
